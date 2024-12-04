@@ -29,6 +29,7 @@ import {
   Login as LoginIcon,
 } from '@mui/icons-material';
 import { useAuth } from '../../contexts/AuthContext';
+import LanguageSelector from '../LanguageSelector';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const theme = useTheme();
@@ -141,6 +142,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
             <Box sx={{ flexGrow: 1 }} />
 
+            <LanguageSelector />
+
             {isAuthenticated ? (
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <IconButton onClick={handleMenu} sx={{ p: 0 }}>
@@ -209,7 +212,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       >
         <Container maxWidth="sm">
           <Typography variant="body2" color="text.secondary" align="center">
-            © {new Date().getFullYear()} Pet Professionals. All rights reserved.
+            {new Date().getFullYear()} Pet Professionals. All rights reserved.
           </Typography>
         </Container>
       </Box>

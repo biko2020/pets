@@ -1,0 +1,88 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "reviews": "reviews"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign Up",
+    "signIn": "Sign In"
+  },
+  "profile": {
+    "title": "Profile Settings",
+    "companyInfo": "Company Information",
+    "companyName": "Company Name",
+    "description": "Description",
+    "contact": "Contact Information",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "phone": "Phone",
+    "website": "Website",
+    "categories": "Business Categories",
+    "uploadPhoto": "Upload Photo",
+    "saveChanges": "Save Changes",
+    "updateSuccess": "Profile updated successfully",
+    "updateError": "Failed to update profile"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Overview",
+    "statistics": "Statistics",
+    "profileViews": "Profile Views",
+    "totalReviews": "Total Reviews",
+    "recentActivity": "Recent Activity",
+    "viewAll": "View All",
+    "editProfile": "Edit Profile"
+  },
+  "search": {
+    "title": "Find Pet Professionals",
+    "subtitle": "Search for veterinarians, groomers, pet hotels, and more in your area",
+    "searchPlaceholder": "Search by name or service",
+    "category": "Category",
+    "city": "City",
+    "allCategories": "All Categories",
+    "searchButton": "Search",
+    "noResults": "No results found",
+    "filters": "Filters",
+    "sortBy": "Sort by",
+    "rating": "Rating",
+    "distance": "Distance"
+  },
+  "categories": {
+    "vets": "Veterinarians",
+    "grooming": "Pet Grooming",
+    "pethotels": "Pet Hotels",
+    "pettransport": "Pet Transport",
+    "events": "Pet Events",
+    "petproducts": "Pet Products",
+    "petfood": "Pet Food",
+    "petclinics": "Pet Clinics",
+    "insurance": "Pet Insurance",
+    "associations": "Pet Associations",
+    "advice": "Pet Advice"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "password": "Password must be at least 6 characters",
+    "passwordMatch": "Passwords must match",
+    "phone": "Please enter a valid phone number",
+    "website": "Please enter a valid website URL"
+  }
+}

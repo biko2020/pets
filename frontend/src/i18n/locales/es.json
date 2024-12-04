@@ -1,0 +1,88 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Se produjo un error",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "reviews": "reseñas"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "noAccount": "¿No tienes una cuenta?",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "signUp": "Regístrate",
+    "signIn": "Iniciar sesión"
+  },
+  "profile": {
+    "title": "Configuración del perfil",
+    "companyInfo": "Información de la empresa",
+    "companyName": "Nombre de la empresa",
+    "description": "Descripción",
+    "contact": "Información de contacto",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "country": "País",
+    "phone": "Teléfono",
+    "website": "Sitio web",
+    "categories": "Categorías de negocio",
+    "uploadPhoto": "Subir foto",
+    "saveChanges": "Guardar cambios",
+    "updateSuccess": "Perfil actualizado exitosamente",
+    "updateError": "Error al actualizar el perfil"
+  },
+  "dashboard": {
+    "title": "Panel de control",
+    "overview": "Resumen",
+    "statistics": "Estadísticas",
+    "profileViews": "Vistas del perfil",
+    "totalReviews": "Total de reseñas",
+    "recentActivity": "Actividad reciente",
+    "viewAll": "Ver todo",
+    "editProfile": "Editar perfil"
+  },
+  "search": {
+    "title": "Encuentra profesionales de mascotas",
+    "subtitle": "Busca veterinarios, peluqueros, hoteles para mascotas y más en tu área",
+    "searchPlaceholder": "Buscar por nombre o servicio",
+    "category": "Categoría",
+    "city": "Ciudad",
+    "allCategories": "Todas las categorías",
+    "searchButton": "Buscar",
+    "noResults": "No se encontraron resultados",
+    "filters": "Filtros",
+    "sortBy": "Ordenar por",
+    "rating": "Calificación",
+    "distance": "Distancia"
+  },
+  "categories": {
+    "vets": "Veterinarios",
+    "grooming": "Peluquería de mascotas",
+    "pethotels": "Hoteles para mascotas",
+    "pettransport": "Transporte de mascotas",
+    "events": "Eventos para mascotas",
+    "petproducts": "Productos para mascotas",
+    "petfood": "Alimentos para mascotas",
+    "petclinics": "Clínicas veterinarias",
+    "insurance": "Seguros para mascotas",
+    "associations": "Asociaciones de mascotas",
+    "advice": "Consejos para mascotas"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "email": "Por favor ingresa un correo electrónico válido",
+    "password": "La contraseña debe tener al menos 6 caracteres",
+    "passwordMatch": "Las contraseñas deben coincidir",
+    "phone": "Por favor ingresa un número de teléfono válido",
+    "website": "Por favor ingresa una URL válida"
+  }
+}
