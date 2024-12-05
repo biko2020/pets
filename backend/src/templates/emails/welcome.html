@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Pet Professionals Network!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .features {
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+        .feature-item {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .feature-item:before {
+            content: "✓";
+            color: #28a745;
+            position: absolute;
+            left: 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .support {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            font-size: 12px;
+            color: #666666;
+        }
+        .social-links {
+            margin-top: 15px;
+        }
+        .social-link {
+            margin: 0 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{logoUrl}}" alt="Pet Professionals Network" class="logo">
+            <h1>Welcome to Pet Professionals Network!</h1>
+        </div>
+        
+        <div class="content">
+            <p>Hi {{firstName}},</p>
+            
+            <p>Welcome to Pet Professionals Network! We're excited to have you join our community of pet care professionals.</p>
+            
+            <h3>What you can do now:</h3>
+            <ul class="features">
+                <li class="feature-item">Create your professional profile</li>
+                <li class="feature-item">Connect with pet owners in your area</li>
+                <li class="feature-item">Showcase your services and expertise</li>
+                <li class="feature-item">Receive reviews and build your reputation</li>
+                <li class="feature-item">Message clients directly through our platform</li>
+            </ul>
+            
+            <center>
+                <a href="{{loginUrl}}" class="button">Get Started Now</a>
+            </center>
+            
+            <div class="support">
+                <p><strong>Need help getting started?</strong></p>
+                <p>Our support team is here to help! Contact us at <a href="mailto:{{supportEmail}}">{{supportEmail}}</a></p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Follow us on social media for tips, updates, and success stories:</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">LinkedIn</a>
+            </div>
+            <p>© {{year}} Pet Professionals Network. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

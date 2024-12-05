@@ -1,8 +1,11 @@
 const Review = require('../models/Review');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
+const ReviewVote = require('../models/ReviewVote');
 const { Op } = require('sequelize');
 const sequelize = require('../config/database');
+const emailService = require('../services/emailService');
+const websocketService = require('../services/websocket');
 
 exports.createReview = async (req, res) => {
   const transaction = await sequelize.transaction();
@@ -210,4 +213,121 @@ exports.deleteReview = async (req, res) => {
     await transaction.rollback();
     res.status(500).json({ message: 'Failed to delete review', error: error.message });
   }
+};
+
+exports.voteReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const { voteType } = req.body;
+    const userId = req.user.id;
+
+    const review = await Review.findByPk(reviewId);
+    if (!review) {
+      return res.status(404).json({ error: 'Review not found' });
+    }
+
+    // Create vote and handle unique constraint
+    try {
+      await ReviewVote.create({
+        reviewId,
+        userId,
+        voteType
+      });
+
+      // Update vote counts
+      if (voteType === 'helpful') {
+        await review.increment('helpfulVotes');
+      } else {
+        await review.increment('unhelpfulVotes');
+      }
+
+      return res.json({ message: 'Vote recorded successfully' });
+    } catch (error) {
+      if (error.message === 'User has already voted on this review') {
+        return res.status(400).json({ error: error.message });
+      }
+      throw error;
+    }
+  } catch (error) {
+    console.error('Error in voteReview:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+exports.reportReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const { reason } = req.body;
+    
+    const review = await Review.findByPk(reviewId);
+    if (!review) {
+      return res.status(404).json({ error: 'Review not found' });
+    }
+
+    await review.increment('reportCount');
+    
+    // Auto-moderate if report threshold is reached
+    if (review.reportCount >= 5) {
+      await review.update({
+        status: 'pending',
+        moderationNotes: `Auto-moderated due to ${review.reportCount} reports. Latest reason: ${reason}`
+      });
+    }
+
+    return res.json({ message: 'Review reported successfully' });
+  } catch (error) {
+    console.error('Error in reportReview:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+exports.moderateReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const { status, moderationNotes } = req.body;
+
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ error: 'Unauthorized' });
+    }
+
+    const review = await Review.findByPk(reviewId, {
+      include: [
+        { model: User, as: 'author' },
+        { model: User, as: 'business' }
+      ]
+    });
+
+    if (!review) {
+      return res.status(404).json({ error: 'Review not found' });
+    }
+
+    await review.update({
+      status,
+      moderationNotes
+    });
+
+    // Notify users about moderation decision
+    if (status === 'rejected') {
+      await emailService.sendReviewRejectedEmail(review.author.email, {
+        reviewTitle: review.title,
+        moderationNotes
+      });
+    }
+
+    return res.json({ message: 'Review moderated successfully' });
+  } catch (error) {
+    console.error('Error in moderateReview:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+module.exports = {
+  createReview: exports.createReview,
+  getProfileReviews: exports.getProfileReviews,
+  updateReview: exports.updateReview,
+  respondToReview: exports.respondToReview,
+  deleteReview: exports.deleteReview,
+  voteReview: exports.voteReview,
+  reportReview: exports.reportReview,
+  moderateReview: exports.moderateReview
 };

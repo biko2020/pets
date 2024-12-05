@@ -1,6 +1,8 @@
 const Message = require('../models/Message');
 const User = require('../models/User');
+const Notification = require('../models/Notification');
 const { Op } = require('sequelize');
+const websocket = require('../services/websocket').getInstance();
 
 exports.sendMessage = async (req, res) => {
   try {
@@ -12,6 +14,34 @@ exports.sendMessage = async (req, res) => {
       subject,
       content,
       parentMessageId
+    });
+
+    // Create notification
+    const sender = await User.findByPk(req.user.id, {
+      attributes: ['firstName', 'lastName']
+    });
+
+    const notification = await Notification.create({
+      userId: receiverId,
+      type: 'message',
+      title: 'New Message',
+      content: `${sender.firstName} ${sender.lastName} sent you a message`,
+      data: {
+        messageId: message.id,
+        senderId: req.user.id,
+        preview: content.substring(0, 100)
+      }
+    });
+
+    // Send WebSocket notification
+    websocket.sendMessageNotification(receiverId, {
+      message,
+      notification,
+      sender: {
+        id: req.user.id,
+        firstName: sender.firstName,
+        lastName: sender.lastName
+      }
     });
 
     res.status(201).json({

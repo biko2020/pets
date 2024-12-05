@@ -37,9 +37,36 @@ const Review = sequelize.define('Review', {
   },
   content: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      len: [10, 2000]
+    }
+  },
+  status: {
+    type: DataTypes.ENUM('pending', 'approved', 'rejected'),
+    defaultValue: 'pending'
+  },
+  moderationNotes: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  helpfulVotes: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  },
+  unhelpfulVotes: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  },
+  reportCount: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
   },
   isVerified: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  },
+  isVerifiedPurchase: {
     type: DataTypes.BOOLEAN,
     defaultValue: false
   },

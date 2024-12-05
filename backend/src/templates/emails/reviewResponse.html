@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response to Your Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .response-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+        }
+        .review-title {
+            color: #666666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            font-size: 12px;
+            color: #666666;
+        }
+        .unsubscribe {
+            color: #999999;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Response to Your Review</h2>
+        </div>
+        
+        <div class="content">
+            <p>Hi {{recipientName}},</p>
+            
+            <p><strong>{{businessName}}</strong> has responded to your review:</p>
+            
+            <div class="review-title">
+                Your review: "{{reviewTitle}}"
+            </div>
+            
+            <div class="response-box">
+                <p><em>{{responseContent}}</em></p>
+            </div>
+            
+            <p>To view the full response and continue the conversation, click the button below:</p>
+            
+            <center>
+                <a href="{{profileUrl}}" class="button">View Response</a>
+            </center>
+        </div>
+        
+        <div class="footer">
+            <p>This email was sent to you because you have notifications enabled for review responses.</p>
+            <p>To unsubscribe from these notifications, <a href="{{unsubscribeUrl}}" class="unsubscribe">click here</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

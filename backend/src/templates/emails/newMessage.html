@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .message-preview {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            font-size: 12px;
+            color: #666666;
+        }
+        .unsubscribe {
+            color: #999999;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>New Message Received</h2>
+        </div>
+        
+        <div class="content">
+            <p>Hi {{recipientName}},</p>
+            
+            <p>You have received a new message from <strong>{{senderName}}</strong>.</p>
+            
+            <div class="message-preview">
+                <p><em>{{messagePreview}}</em></p>
+            </div>
+            
+            <p>To view the full message and reply, click the button below:</p>
+            
+            <center>
+                <a href="{{messageUrl}}" class="button">View Message</a>
+            </center>
+        </div>
+        
+        <div class="footer">
+            <p>This email was sent to you because you have notifications enabled for new messages.</p>
+            <p>To unsubscribe from these notifications, <a href="{{unsubscribeUrl}}" class="unsubscribe">click here</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

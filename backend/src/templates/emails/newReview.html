@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .content {
+            padding: 20px 0;
+        }
+        .review-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        .rating {
+            color: #ffc107;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            font-size: 12px;
+            color: #666666;
+        }
+        .unsubscribe {
+            color: #999999;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>New Review Received</h2>
+        </div>
+        
+        <div class="content">
+            <p>Hi {{recipientName}},</p>
+            
+            <p>You have received a new review from <strong>{{reviewerName}}</strong>.</p>
+            
+            <div class="review-box">
+                <div class="rating">
+                    {{#times rating}}★{{/times}}{{#times (subtract 5 rating)}}☆{{/times}}
+                </div>
+                <h3>{{reviewTitle}}</h3>
+                <p><em>{{reviewContent}}</em></p>
+            </div>
+            
+            <p>To view the full review and respond, click the button below:</p>
+            
+            <center>
+                <a href="{{profileUrl}}" class="button">View Review</a>
+            </center>
+        </div>
+        
+        <div class="footer">
+            <p>This email was sent to you because you have notifications enabled for new reviews.</p>
+            <p>To unsubscribe from these notifications, <a href="{{unsubscribeUrl}}" class="unsubscribe">click here</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
