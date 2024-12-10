@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import WebSocketService from '../services/websocket';
 import { useAuth } from './AuthContext';
-import { useSnackbar } from 'notistack';
+import { useSnackbar, SnackbarKey } from 'notistack';
 import { useTranslation } from 'react-i18next';
 
 interface Notification {
@@ -115,7 +115,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({
         enqueueSnackbar(newNotification.content, {
           variant: 'info',
           autoHideDuration: 5000,
-          action: (key) => (
+          action: (key: SnackbarKey) => (
             <React.Fragment>
               <button
                 onClick={() => {

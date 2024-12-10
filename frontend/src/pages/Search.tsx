@@ -18,6 +18,7 @@ import {
   InputAdornment,
   CircularProgress,
   Paper,
+  SelectChangeEvent,
 } from '@mui/material';
 import {
   Search as SearchIcon,
@@ -74,7 +75,7 @@ const Search = () => {
   );
 
   const handleFilterChange = (field: keyof SearchFilters) => (
-    event: React.ChangeEvent<HTMLInputElement | { value: unknown }>
+    event: SelectChangeEvent<string> | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>
   ) => {
     setFilters((prev) => ({
       ...prev,

@@ -207,7 +207,7 @@ const Profile = () => {
                     value={formik.values.companyName}
                     onChange={formik.handleChange}
                     error={formik.touched.companyName && Boolean(formik.errors.companyName)}
-                    helperText={formik.touched.companyName && formik.errors.companyName}
+                    helperText={formik.touched.companyName && formik.errors.companyName ? String(formik.errors.companyName) : ''}
                   />
                 </Grid>
 
@@ -222,7 +222,7 @@ const Profile = () => {
                     value={formik.values.description}
                     onChange={formik.handleChange}
                     error={formik.touched.description && Boolean(formik.errors.description)}
-                    helperText={formik.touched.description && formik.errors.description}
+                    helperText={formik.touched.description && formik.errors.description ? String(formik.errors.description) : ''}
                   />
                 </Grid>
 
@@ -236,7 +236,7 @@ const Profile = () => {
                       name="categories"
                       renderValue={(selected) => (
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                          {selected.map((value) => (
+                          {selected.map((value: string) => (
                             <Chip key={value} label={value} />
                           ))}
                         </Box>
@@ -260,7 +260,7 @@ const Profile = () => {
                     value={formik.values.address}
                     onChange={formik.handleChange}
                     error={formik.touched.address && Boolean(formik.errors.address)}
-                    helperText={formik.touched.address && formik.errors.address}
+                    helperText={formik.touched.address && formik.errors.address ? String(formik.errors.address) : ''}
                   />
                 </Grid>
 
@@ -273,7 +273,7 @@ const Profile = () => {
                     value={formik.values.city}
                     onChange={formik.handleChange}
                     error={formik.touched.city && Boolean(formik.errors.city)}
-                    helperText={formik.touched.city && formik.errors.city}
+                    helperText={formik.touched.city && formik.errors.city ? String(formik.errors.city) : ''}
                   />
                 </Grid>
 
@@ -286,7 +286,7 @@ const Profile = () => {
                     value={formik.values.country}
                     onChange={formik.handleChange}
                     error={formik.touched.country && Boolean(formik.errors.country)}
-                    helperText={formik.touched.country && formik.errors.country}
+                    helperText={formik.touched.country && formik.errors.country ? String(formik.errors.country) : ''}
                   />
                 </Grid>
 
@@ -299,7 +299,7 @@ const Profile = () => {
                     value={formik.values.phone}
                     onChange={formik.handleChange}
                     error={formik.touched.phone && Boolean(formik.errors.phone)}
-                    helperText={formik.touched.phone && formik.errors.phone}
+                    helperText={formik.touched.phone && formik.errors.phone ? String(formik.errors.phone) : ''}
                   />
                 </Grid>
 
@@ -312,7 +312,7 @@ const Profile = () => {
                     value={formik.values.website}
                     onChange={formik.handleChange}
                     error={formik.touched.website && Boolean(formik.errors.website)}
-                    helperText={formik.touched.website && formik.errors.website}
+                    helperText={formik.touched.website && formik.errors.website ? String(formik.errors.website) : ''}
                   />
                 </Grid>
 

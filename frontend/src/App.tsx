@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { theme } from './theme';
+import { SnackbarProvider } from 'notistack';
 
 // Layout
 import Layout from './components/Layout';
@@ -24,39 +25,44 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AuthProvider>
-          <BrowserRouter>
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/search" element={<Search />} />
-                <Route
-                  path="/dashboard"
-                  element={
-                    <PrivateRoute>
-                      <Dashboard />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/profile"
-                  element={
-                    <PrivateRoute>
-                      <Profile />
-                    </PrivateRoute>
-                  }
-                />
-              </Routes>
-            </Layout>
-          </BrowserRouter>
-        </AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <SnackbarProvider maxSnack={3}>
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="register" element={<Register />} />
+                    <Route 
+                      path="dashboard" 
+                      element={
+                        <PrivateRoute>
+                          <Dashboard />
+                        </PrivateRoute>
+                      } 
+                    />
+                    <Route 
+                      path="profile" 
+                      element={
+                        <PrivateRoute>
+                          <Profile />
+                        </PrivateRoute>
+                      } 
+                    />
+                    <Route path="search" element={<Search />} />
+                    <Route path="*" element={<Outlet />} />
+                  </Route>
+                </Routes>
+              </BrowserRouter>
+            </SnackbarProvider>
+          </AuthProvider>
+        </QueryClientProvider>
       </ThemeProvider>
-    </QueryClientProvider>
+    </StyledEngineProvider>
   );
 }
 

@@ -1,15 +1,20 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { Box, Container, AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface LayoutProps {
+  children?: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate();
-  const { currentUser, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   const handleLogout = async () => {
     try {
-      await logout();
+      logout();
       navigate('/login');
     } catch (error) {
       console.error('Failed to log out:', error);
@@ -21,29 +26,20 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Pets App
+            Pet Professionals
           </Typography>
-          <Button color="inherit" onClick={() => navigate('/')}>Home</Button>
-          <Button color="inherit" onClick={() => navigate('/search')}>Search</Button>
-          {currentUser ? (
-            <>
-              <Button color="inherit" onClick={() => navigate('/dashboard')}>Dashboard</Button>
-              <Button color="inherit" onClick={() => navigate('/profile')}>Profile</Button>
-              <Button color="inherit" onClick={handleLogout}>Logout</Button>
-            </>
-          ) : (
-            <>
-              <Button color="inherit" onClick={() => navigate('/login')}>Login</Button>
-              <Button color="inherit" onClick={() => navigate('/register')}>Register</Button>
-            </>
+          {user && (
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
           )}
         </Toolbar>
       </AppBar>
-      <Container component="main" sx={{ flexGrow: 1, py: 4 }}>
-        {children}
+      <Container component="main" sx={{ flexGrow: 1, mt: 3, mb: 3 }}>
+        {children || <Outlet />}
       </Container>
     </Box>
   );
-};
+}
 
 export default Layout;

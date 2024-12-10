@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const { user } = useAuth();
 
   return (
     <Container maxWidth="lg">
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
         <Typography variant="h5" color="text.secondary" paragraph>
           Connect with pet lovers, find your perfect companion, and share your pet journey
         </Typography>
-        {!currentUser && (
+        {!user && (
           <Box sx={{ mt: 4 }}>
             <Button
               variant="contained"

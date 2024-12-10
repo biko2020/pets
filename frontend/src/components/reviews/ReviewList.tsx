@@ -21,6 +21,7 @@ interface Review {
   content: string;
   createdAt: string;
   user: {
+    id: string;
     firstName: string;
     lastName: string;
   };
@@ -71,7 +72,7 @@ const ReviewList: React.FC<ReviewListProps> = ({
                     {formatDistanceToNow(new Date(review.createdAt), { addSuffix: true })}
                   </Typography>
                 </Box>
-                {user && user.id === review.user.id && (
+                {user && user.id !== null && user.id === review.user.id && (
                   <Box>
                     <Button
                       size="small"
